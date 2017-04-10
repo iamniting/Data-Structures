@@ -108,6 +108,40 @@ int get_height(node * root)
     return height;
 }
 
+int calculate_height(node * root)
+{
+    if(root == NULL)
+        return -1;
+    
+    int height = -1;
+    
+    queue <node *> q;
+    q.push(root);
+    
+    while(!q.empty())
+    {
+        // nodeCount indicates no. of nodes at current level
+        
+        int nodeCount = q.size();
+        height++;
+        
+        // dequeue all nodes of current level
+        // enqueue all child nodes of the current level
+        
+        for(int i=0; i<nodeCount; i++)
+        {
+            node * temp = q.front();
+            q.pop();
+            
+            if(temp->left != NULL)
+                q.push(temp->left);
+            if(temp->right != NULL)
+                q.push(temp->right);
+        }
+    }
+    return height;	
+}
+
 int main()
 {
     node * root = NULL;
@@ -120,6 +154,11 @@ int main()
     root = insert(root, 40);
     root = insert(root, 7);
     
-    cout << get_height(root);
+    // get_height function with time complexity of big O (n)
+    cout << endl << "height is " << get_height(root);
+    
+    // calculate_height function with time complexity of big O (n ^ 2)
+    cout << endl << "height is " << calculate_height(root);
+    
     return 0;
 }
