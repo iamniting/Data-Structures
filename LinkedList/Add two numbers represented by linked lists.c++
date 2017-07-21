@@ -66,48 +66,36 @@ node * AddLists(node * head1, node * head2)
 int main() 
 {
     int n;
-	cin >> n;
-	
-	for(int i=0; i<n; i++)
-	{
-	    int n1, n2;
-	    cin >> n1 >> n2;
-	    node * head1 = NULL;
-	    node * head2 = NULL;
-	    node * res = NULL;
-	    for(int j=0; j<n1; j++)
-	    {
-	        int a;
-	        cin >> a;
-	        head1 = create(head1, a);
-	    }
-	    for(int j=0; j<n2; j++)
-	    {
-	        int a;
-	        cin >> a;
-	        head2 = create(head2, a);
-	    }
-	    /*res = head1;
-	    while(res != NULL)
-	    {
-	        cout << res->info << " ";
-	        res = res->next;
-	    }
-	    res = head2;
-	    while(res != NULL)
-	    {
-	        cout << res->info << " ";
-	        res = res->next;
-	    }
-	    res = NULL;*/
-	    res = AddLists(head1, head2);
-	    
-	    while(res != NULL)
-	    {
-	        cout << res->info << " ";
-	        res = res->next;
-	    }
-	    cout << endl;
-	}
-	return 0;
+    cin >> n;
+    
+    for(int i=0; i<n; i++)
+    {
+        int n1, n2;
+        cin >> n1 >> n2;
+        node * head1 = NULL;
+        node * head2 = NULL;
+        node * res = NULL;
+        for(int j=0; j<n1; j++)
+        {
+            int a;
+            cin >> a;
+            head1 = create(head1, a);
+        }
+        for(int j=0; j<n2; j++)
+        {
+            int a;
+            cin >> a;
+            head2 = create(head2, a);
+        }
+        
+        res = AddLists(head1, head2);
+        
+        while(res != NULL)
+        {
+            cout << res->info << " ";
+            res = res->next;
+        }
+        cout << endl;
+    }
+    return 0;
 }
